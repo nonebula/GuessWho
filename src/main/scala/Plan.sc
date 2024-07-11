@@ -24,7 +24,7 @@
   - Test random selection
   - Test Yes/No Questions
   - Test state changes of the board after each questions
-  - Test condistions in which the game ends
+  - Test conditions in which the game ends
 
 
   Game will end when the correct character is guessed
