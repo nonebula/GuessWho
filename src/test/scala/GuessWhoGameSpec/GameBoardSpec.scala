@@ -1,5 +1,0 @@
-package GuessWhoGameSpec
-
-class GameBoardSpec {
-
-}
