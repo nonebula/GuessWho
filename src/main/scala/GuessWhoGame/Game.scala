@@ -16,7 +16,7 @@ object Game extends App {
 
 
 
-//  case class Character(
+//  case class GuessWhoGame.Character(
 //                        name: String,
 //                        gender: String,
 //                        hairColor: String,
