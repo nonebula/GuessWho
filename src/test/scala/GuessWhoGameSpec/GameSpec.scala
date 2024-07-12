@@ -1,0 +1,5 @@
+package GuessWhoGameSpec
+
+object GameSpec {
+
+}
