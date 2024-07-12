@@ -1,0 +1,5 @@
+package GuessWhoGameSpec
+
+class GameLogicSpec {
+
+}
