@@ -1,5 +1,4 @@
-  Here we go!
-  /**
+/**
    1. Classes, Case Classes, Traits
 
   Classes and Case Classes for character representation
