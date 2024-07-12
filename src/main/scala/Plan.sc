@@ -7,6 +7,11 @@
    facialHair: Boolean)
   Attributes of each character - gender, hairColour etc
 
+   // Define Character class
+   case class Character(name: String, gender: String, hairColor: String, eyeColor: String)
+
+   // Define Game class
+   class GuessWhoGame(characters: List[Character]) {
 
   2. Trait for game logic - random character selection
  Method for random selection - private val
