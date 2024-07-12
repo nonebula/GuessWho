@@ -9,12 +9,12 @@ case class Character(
                       facialHair: Boolean
                     )
 
-class GameBoard(val characters: List[Character]) {
-  private var remainingCharacters: List[Character] = characters
+class GameBoard(val characters: List[GuessWhoGame.Character]) {
+  private var remainingCharacters: List[GuessWhoGame.Character] = characters
 
-  def getRemainingCharacters: List[Character] = remainingCharacters
+  def getRemainingCharacters: List[GuessWhoGame.Character] = remainingCharacters
 
-  def eliminateCharacter(character: Character): Unit = {
+  def eliminateCharacter(character: GuessWhoGame.Character): Unit = {
     remainingCharacters = remainingCharacters.filterNot(_ == character)
   }
 
@@ -23,15 +23,15 @@ class GameBoard(val characters: List[Character]) {
   }
 }
 
-class GuessWhoGame(characters: List[Character]) {
+class GuessWhoGame(characters: List[GuessWhoGame.Character]) {
   private val board = new GameBoard(characters)
   private val selectedCharacter = selectRandomCharacter(characters)
 
-  private def selectRandomCharacter(characters: List[Character]): Character = {
+  private def selectRandomCharacter(characters: List[GuessWhoGame.Character]): GuessWhoGame.Character = {
     characters(Random.nextInt(characters.size))
   }
 
-  def askQuestion(question: Character => Boolean): Boolean = {
+  def askQuestion(question: GuessWhoGame.Character => Boolean): Boolean = {
     val answer = question(selectedCharacter)
     board.getRemainingCharacters.foreach { character =>
       if (question(character) != answer) board.eliminateCharacter(character)
@@ -41,7 +41,7 @@ class GuessWhoGame(characters: List[Character]) {
 
   def checkWinCondition: Boolean = board.getRemainingCharacters.size == 1
 
-  def getSelectedCharacter: Character = selectedCharacter
+  def getSelectedCharacter: GuessWhoGame.Character = selectedCharacter
 
-  def getRemainingCharacters: List[Character] = board.getRemainingCharacters
+  def getRemainingCharacters: List[GuessWhoGame.Character] = board.getRemainingCharacters
 }
