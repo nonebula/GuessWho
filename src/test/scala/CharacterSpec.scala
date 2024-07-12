@@ -1,1 +1,3 @@
-case class CharacterSpec()
+class CharacterSpec {
+
+}
