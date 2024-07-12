@@ -1,5 +1,0 @@
-package GuessWhoGameSpec
-
-object GameSpec {
-
-}
