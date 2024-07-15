@@ -7,10 +7,10 @@ case class Board (characters: List[Character]) {
     characters.foreach(Character => println(Character.name))
   }
 
-  private val selectedCharacter: Character = selectRandomCharacter(characters)
-  private var remainingCharacters: List[Character] = characters
+   val selectedCharacter: Character = selectRandomCharacter(characters)
+  var remainingCharacters: List[Character] = characters
 
-  private def selectRandomCharacter(characters: List[Character]): Character = {
+  def selectRandomCharacter(characters: List[Character]): Character = {
     characters(Random.nextInt(characters.size))
   }
 
@@ -27,9 +27,9 @@ case class Board (characters: List[Character]) {
 
   def checkWinCondition: Boolean = getRemainingCharacters.size == 1
 
-  //  def eliminateCharacter(character: Character): Unit = {
-  //    var remainingCharacters = characters.filterNot(_ == character)
-  //  }
+    def eliminateCharacter(character: Character): Unit = {
+      var remainingCharacters = characters.filterNot(_ == character)
+    }
   def handleQuestion(attribute: String, value: Either[String, Boolean]): Unit = {
     attribute match {
       case "name" =>
