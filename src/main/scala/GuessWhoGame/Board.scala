@@ -24,7 +24,9 @@ case class Board (characters: List[Character]) {
 
 
   def getRemainingCharacters: List[Character] = remainingCharacters
-
+  def resetBoard(): Unit = {
+    remainingCharacters = characters
+  }
   def checkWinCondition: Boolean = getRemainingCharacters.size == 1
 
     def eliminateCharacter(character: Character): Unit = {
@@ -38,6 +40,7 @@ case class Board (characters: List[Character]) {
             if (selectedCharacter.name == value) {
               remainingCharacters.filter(_.name == value)
               //endGame()
+              //resetBoard()
             } else {
               remainingCharacters.filterNot(_.name == value)
             }
@@ -103,10 +106,6 @@ case class Board (characters: List[Character]) {
           case _ => println("Invalid facial hair value added. Try again")
             remainingCharacters
         }
-    }
-
-    def resetBoard(): Unit = {
-      remainingCharacters = characters
     }
   }
 }

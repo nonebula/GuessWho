@@ -27,8 +27,6 @@ class BoardSpec extends AnyFlatSpec {
     //assert(gameBoard.selectRandomCharacter(characters: List[Character]) == gameBoard.selectedCharacter)
   }
 
-  // Stores remaining characters
-
   //Watches for the win condition
 
   it should "check win condition correctly" in {
@@ -40,9 +38,9 @@ class BoardSpec extends AnyFlatSpec {
     }
   }
 
-  //Handles questions, rerenders based on question result
+  //Handles questions, rerenders based on question result ||  Stores remaining characters
 
-    it should "eliminate characters correctly based on questions" in {
+    it should "eliminate characters correctly based on gender questions" in {
       val gameBoard = new Board(characters)
       val initialSize = gameBoard.remainingCharacters.size
       gameBoard.handleQuestion("gender", Left("male"))
@@ -50,6 +48,51 @@ class BoardSpec extends AnyFlatSpec {
       newSize should be < initialSize
       //gameBoard.getRemainingCharacters.forall(_.gender == "male") shouldBe true
     }
+
+  it should "eliminate characters correctly based on name questions" in {
+    val gameBoard = new Board(characters)
+    val initialSize = gameBoard.remainingCharacters.size
+    gameBoard.handleQuestion("name", Left("muhammad"))
+    val newSize = gameBoard.remainingCharacters.size
+    newSize should be < initialSize
+    //gameBoard.getRemainingCharacters.forall(_.gender == "male") shouldBe true
+  }
+
+  it should "eliminate characters correctly based on hairColor questions" in {
+    val gameBoard = new Board(characters)
+    val initialSize = gameBoard.remainingCharacters.size
+    gameBoard.handleQuestion("hairColor", Left("blonde"))
+    val newSize = gameBoard.remainingCharacters.size
+    newSize should be < initialSize
+    //gameBoard.getRemainingCharacters.forall(_.gender == "male") shouldBe true
+  }
+
+  it should "eliminate characters correctly based on eyeColor questions" in {
+    val gameBoard = new Board(characters)
+    val initialSize = gameBoard.remainingCharacters.size
+    gameBoard.handleQuestion("eyeColor", Left("blue"))
+    val newSize = gameBoard.remainingCharacters.size
+    newSize should be < initialSize
+    //gameBoard.getRemainingCharacters.forall(_.gender == "male") shouldBe true
+  }
+
+  it should "eliminate characters correctly based on wearsGlasses questions" in {
+    val gameBoard = new Board(characters)
+    val initialSize = gameBoard.remainingCharacters.size
+    gameBoard.handleQuestion("wearsGlasses", Right(false))
+    val newSize = gameBoard.remainingCharacters.size
+    newSize should be < initialSize
+    //gameBoard.getRemainingCharacters.forall(_.gender == "male") shouldBe true
+  }
+
+  it should "eliminate characters correctly based on HasFacialHair questions" in {
+    val gameBoard = new Board(characters)
+    val initialSize = gameBoard.remainingCharacters.size
+    gameBoard.handleQuestion("hasFacialHair", Right(false))
+    val newSize = gameBoard.remainingCharacters.size
+    newSize should be < initialSize
+    //gameBoard.getRemainingCharacters.forall(_.gender == "male") shouldBe true
+  }
 
 //    it should "eliminate characters correctly based on questions" in {
 //      val game = new Board(characters)
@@ -60,13 +103,13 @@ class BoardSpec extends AnyFlatSpec {
   // Updates based on filters applied to questions
 
   //Resets board
-  //  it should "reset the game board correctly" in {
-  //    val game = new Board(characters)
-  //    gameLogic.handleQuestion(character => character.gender == "male")
-  //    game.getRemainingCharacters.size should be < characters.size
-  //    game.resetBoard()
-  //    game.getRemainingCharacters.size shouldEqual characters.size
-  //  }
+//    it should "reset the game board correctly" in {
+//      val gameBoard = new Board(characters)
+//      gameBoard.handleQuestion(character => character.gender == "male")
+//      gameBoard.getRemainingCharacters.size should be < characters.size
+//      gameBoard.resetBoard()
+//      gameBoard.getRemainingCharacters.size shouldEqual characters.size
+//    }
   //
   //  // to revisit if needed
   //  it should "eliminate a character correctly" in {
