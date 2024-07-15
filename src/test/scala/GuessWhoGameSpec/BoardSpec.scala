@@ -111,6 +111,31 @@ class BoardSpec extends AnyFlatSpec {
     //gameBoard.getRemainingCharacters.forall(_.gender == "male") shouldBe true
   }
 
+  it should "handle incorrect attribute values cleanly" in {
+    val gameBoard = Board(characters)
+    val initialSize = gameBoard.getRemainingCharacters.size
+    gameBoard.handleQuestion("gender", Left("nonexistent gender"))
+    val newSize = gameBoard.getRemainingCharacters.size
+
+    newSize shouldEqual initialSize
+  }
+
+  it should "fail to eliminate characters with incorrect gender" in {
+    val gameBoard = Board(characters)
+    gameBoard.handleQuestion("gender", Left("female"))
+    gameBoard.getRemainingCharacters.forall(_.gender == "male") shouldBe true
+  }
+
+  it should "handle edge case where all characters have the same attribute" in {
+    val sameGenderCharacters = List(
+      Character("john", "male", "brown", "blue", wearsGlasses = false, facialHair = false),
+      Character("paul", "male", "black", "green", wearsGlasses = true, facialHair = true)
+    )
+    val gameBoard = Board(sameGenderCharacters)
+    gameBoard.handleQuestion("gender", Left("male"))
+    gameBoard.getRemainingCharacters.size shouldEqual 2
+  }
+
 //    it should "eliminate characters correctly based on questions" in {
 //      val game = new Board(characters)
 //      gameLogic.handleQuestion(_.gender == "male")
