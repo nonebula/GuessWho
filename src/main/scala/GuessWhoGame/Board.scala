@@ -1,7 +1,12 @@
 package GuessWhoGame
 
-case class Board (Characters: List[Character]) {
+case class Board (characters: List[Character]) {
   def printCharacterNames(): Unit = {
-    Characters.foreach(Character => println(Character.name))
+    characters.foreach(Character => println(Character.name))
   }
+
+  def eliminateCharacter(character: Character): Unit = {
+    var remainingCharacters = characters.filterNot(_ == character)
+  }
+
 }

@@ -10,9 +10,7 @@ class GameBoard(val characters: List[Character]) {
 
   def getRemainingCharacters: List[Character] = remainingCharacters
 
-  def eliminateCharacter(character: Character): Unit = {
-    remainingCharacters = remainingCharacters.filterNot(_ == character)
-  }
+
 
   def resetBoard(): Unit = {
     remainingCharacters = characters
