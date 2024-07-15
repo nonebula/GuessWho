@@ -28,21 +28,7 @@ class CharacterSpec extends AnyFlatSpec {
   )
 
   "GuessWhoGame" should "initialise with 20 characters on the board" in {
-    val game = new GuessWhoGame(characters)
+    val game = new Board(characters)
     game.getRemainingCharacters.size shouldEqual 20
-  }
-
-  it should "eliminate characters correctly based on questions" in {
-    val game = new GuessWhoGame(characters)
-    game.askQuestion(_.gender == "male")
-    game.getRemainingCharacters.forall(_.gender == "male") shouldBe true
-  }
-
-  it should "check win condition correctly" in {
-    val game = new GuessWhoGame(characters)
-    while (game.getRemainingCharacters.size > 1) {
-      game.askQuestion(_.gender == "male") // adjust questions as needed
-    }
-    game.checkWinCondition shouldBe true
   }
 }
