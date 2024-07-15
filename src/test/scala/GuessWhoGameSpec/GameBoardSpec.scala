@@ -1,5 +1,7 @@
 package GuessWhoGameSpec
+import org.scalatest.flatspec.AnyFlatSpec
 
-class GameBoardSpec {
+
+class GameBoardSpec extends AnyFlatSpec {
 
 }

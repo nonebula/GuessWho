@@ -1,4 +1,4 @@
-import org.scalatest.FlatSpec
+import org.scalatest.flatspec.AnyFlatSpec
 
 /**
  //naming convention: same as file with spec at the end
@@ -10,7 +10,7 @@ import org.scalatest.FlatSpec
  }                                         //however sometimes we want it to fail.
  */
 
-class QuestionsSpec extends FlatSpec{
+class QuestionsSpec extends AnyFlatSpec {
 
 }
 

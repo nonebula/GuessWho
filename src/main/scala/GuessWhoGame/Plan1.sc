@@ -11,6 +11,7 @@
   //Make sure the selected character is still represented on the game board
   //Take input questions
   //Amend list based on input questions
+  //Triggering end result
 
 //4. TDD
   //- Write tests for each part of the logic
