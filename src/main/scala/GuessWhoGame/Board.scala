@@ -1,5 +1,7 @@
 package GuessWhoGame
 
 case class Board (Characters: List[Character]) {
-var board1 = Board
+  def printCharacterNames(): Unit = {
+    Characters.foreach(Character => println(Character.name))
+  }
 }
