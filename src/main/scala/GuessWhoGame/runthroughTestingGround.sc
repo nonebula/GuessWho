@@ -1,3 +1,5 @@
+import scala.util.Random
+
 case class Character(val name: String, val gender: String, val hairColor: String, val eyeColor: String, val wearsGlasses: Boolean, val facialHair: Boolean)
 
 case class Board (Characters: List[Character]) {
@@ -33,8 +35,24 @@ gameBoard.printCharacterNames()
 
 //working so far
 
+class GameLogic (board: Board) {
+  private val selectedCharacter = selectRandomCharacter(board.Characters)
 
+  private def selectRandomCharacter(characters: List[Character]): Character = {
+    characters(Random.nextInt(characters.size))
+  }
 
+  def getSelectedCharacter: Character = selectedCharacter
 
+  //Testing only, delete once game running clearly
+  def printSelectedCharacter(): Unit = {
+    println(selectedCharacter.name)
+  }
+  //ABOVE = TESTING ONLY
 
+}
 
+//TESTING IN RUNTHROUGH ONLY
+val gameLogic = new GameLogic(gameBoard)
+gameLogic.printSelectedCharacter()
+//DON'T ADD TO CLASS //ADD TO GAME WITHOUT PRINTSELECTEDCHARACTER
