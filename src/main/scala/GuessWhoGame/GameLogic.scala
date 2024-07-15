@@ -24,6 +24,9 @@ class GameLogic (board: Board) {
 
 
 
+
+
+
   //Not touched yet
     def askQuestion(question: Character => Boolean): Boolean = {
       val answer = question(selectedCharacter)
