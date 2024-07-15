@@ -42,20 +42,20 @@ class BoardSpec extends AnyFlatSpec {
 
   //Handles questions, rerenders based on question result
 
-  //  it should "eliminate characters correctly based on questions" in {
-  //    val game = new Board(characters)
-  //    val initialSize = game.getRemainingCharacters.size
-  //    gameLogic.handleQuestion(character => character.gender == "male")
-  //    val newSize = game.getRemainingCharacters.size
-  //    newSize should be < initialSize
-  //    game.getRemainingCharacters.forall(_.gender == "male") shouldBe true
-  //  }
-  //
-  //  it should "eliminate characters correctly based on questions" in {
-  //    val game = new Board(characters)
-  //    gameLogic.handleQuestion(_.gender == "male")
-  //    board.getRemainingCharacters.forall(_.gender == "male") shouldBe true
-  //  }
+    it should "eliminate characters correctly based on questions" in {
+      val gameBoard = new Board(characters)
+      val initialSize = gameBoard.remainingCharacters.size
+      gameBoard.handleQuestion("gender", Left("male"))
+      val newSize = gameBoard.remainingCharacters.size
+      newSize should be < initialSize
+      //gameBoard.getRemainingCharacters.forall(_.gender == "male") shouldBe true
+    }
+
+//    it should "eliminate characters correctly based on questions" in {
+//      val game = new Board(characters)
+//      gameLogic.handleQuestion(_.gender == "male")
+//      board.getRemainingCharacters.forall(_.gender == "male") shouldBe true
+//    }
 
   // Updates based on filters applied to questions
 

@@ -31,7 +31,7 @@ case class Board (characters: List[Character]) {
       var remainingCharacters = characters.filterNot(_ == character)
     }
   def handleQuestion(attribute: String, value: Either[String, Boolean]): Unit = {
-    attribute match {
+    remainingCharacters = attribute match {
       case "name" =>
         value match {
           case Left(value) =>
@@ -42,6 +42,7 @@ case class Board (characters: List[Character]) {
               remainingCharacters.filterNot(_.name == value)
             }
           case _ => println("Invalid name value added. Try again")
+          remainingCharacters
         }
       case "gender" =>
         value match {
@@ -52,6 +53,7 @@ case class Board (characters: List[Character]) {
               remainingCharacters.filterNot(_.gender == value)
             }
           case _ => println("Invalid gender value added. Try again")
+          remainingCharacters
         }
       case "hairColor" =>
         value match {
@@ -63,6 +65,7 @@ case class Board (characters: List[Character]) {
               remainingCharacters.filterNot(_.hairColor == value)
             }
           case _ => println("Invalid hair colour value added. Try again")
+            remainingCharacters
         }
       case "eyeColor" =>
         value match {
@@ -74,6 +77,7 @@ case class Board (characters: List[Character]) {
               remainingCharacters.filterNot(_.eyeColor == value)
             }
           case _ => println("Invalid eye colour value added. Try again")
+            remainingCharacters
         }
       case "wearsGlasses" =>
         value match {
@@ -85,6 +89,7 @@ case class Board (characters: List[Character]) {
               remainingCharacters.filterNot(_.wearsGlasses == value)
             }
           case _ => println("Invalid glasses value added. Try again")
+            remainingCharacters
         }
       case "hasFacialHair" =>
         value match {
@@ -96,10 +101,8 @@ case class Board (characters: List[Character]) {
               remainingCharacters.filterNot(_.facialHair == value)
             }
           case _ => println("Invalid facial hair value added. Try again")
+            remainingCharacters
         }
-        handleQuestion("hairColor", Left("brown"))
-        handleQuestion("wearsGlasses", Right(true))
-        handleQuestion("name", Left("joe"))
     }
 
     def resetBoard(): Unit = {
