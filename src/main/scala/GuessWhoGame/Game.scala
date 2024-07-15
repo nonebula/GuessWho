@@ -29,6 +29,8 @@ object Game extends App {
   gameBoard.printCharacterNames()
 
 
+
+
   //Run example of the game
   //Call methods
 
