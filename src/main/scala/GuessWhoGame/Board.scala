@@ -2,12 +2,12 @@ package GuessWhoGame
 
 import scala.util.Random
 
-case class Board (characters: List[Character]) {
+case class Board(characters: List[Character]) {
   def printCharacterNames(): Unit = {
     characters.foreach(Character => println(Character.name))
   }
 
-   val selectedCharacter: Character = selectRandomCharacter(characters)
+  val selectedCharacter: Character = selectRandomCharacter(characters)
   var remainingCharacters: List[Character] = characters
 
   def selectRandomCharacter(characters: List[Character]): Character = {
@@ -24,14 +24,17 @@ case class Board (characters: List[Character]) {
 
 
   def getRemainingCharacters: List[Character] = remainingCharacters
+
   def resetBoard(): Unit = {
     remainingCharacters = characters
   }
+
   def checkWinCondition: Boolean = getRemainingCharacters.size == 1
 
-    def eliminateCharacter(character: Character): Unit = {
-      var remainingCharacters = characters.filterNot(_ == character)
-    }
+  def eliminateCharacter(character: Character): Unit = {
+    var remainingCharacters = characters.filterNot(_ == character)
+  }
+
   def handleQuestion(attribute: String, value: Either[String, Boolean]): Unit = {
     remainingCharacters = attribute match {
       case "name" =>
@@ -45,7 +48,7 @@ case class Board (characters: List[Character]) {
               remainingCharacters.filterNot(_.name == value)
             }
           case _ => println("Invalid name value added. Try again")
-          remainingCharacters
+            remainingCharacters
         }
       case "gender" =>
         value match {
@@ -56,7 +59,7 @@ case class Board (characters: List[Character]) {
               remainingCharacters.filterNot(_.gender == value)
             }
           case _ => println("Invalid gender value added. Try again")
-          remainingCharacters
+            remainingCharacters
         }
       case "hairColor" =>
         value match {
