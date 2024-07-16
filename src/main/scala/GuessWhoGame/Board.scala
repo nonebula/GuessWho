@@ -11,6 +11,10 @@ case class Board (characters: List[Character]) {
    val selectedCharacter: Character = selectRandomCharacter(characters)
   var remainingCharacters: List[Character] = characters
 
+  def printRemainingCharacters(): Unit = {
+    remainingCharacters.foreach(Character => println(Character.name))
+  }
+
   def selectRandomCharacter(characters: List[Character]): Character = {
     characters(Random.nextInt(characters.size))
   }
@@ -41,7 +45,7 @@ case class Board (characters: List[Character]) {
             if (selectedCharacter.name == value) {
               remainingCharacters.filter(_.name == value)
               //endGame()
-              //resetBoard()
+//              resetBoard()
             } else {
               remainingCharacters.filterNot(_.name == value)
             }
