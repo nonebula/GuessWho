@@ -27,13 +27,27 @@ object Game extends App {
 
   var gameBoard = Board(List(char1, char2, char3, char4, char5, char6, char7, char8, char9, char10, char11, char12, char13, char14, char15, char16, char17, char18, char19, char20))
 
-  gameBoard.printCharacterNames()
+  def startGame(): Unit = {
+    gameBoard.printCharacterNames()
 
-  //Building out game to terminal
-  println("Welcome to the Guess Who game!")
-  println("Try to guess the character by asking some questions...")
+    //Building out game to terminal
+    println("Welcome to the Guess Who game!")
+    println("Try to guess the character by asking some questions...")
+
+    playGame()
+
+    println("\nDo you want to play again? (yes/no)")
+    val playAgain = scala.io.StdIn.readLine().toLowerCase()
+    if (playAgain == "yes" || playAgain == "y") {
+      gameBoard = Board(List(char1, char2, char3, char4, char5, char6, char7, char8, char9, char10, char11, char12, char13, char14, char15, char16, char17, char18, char19, char20))
+      startGame()
+    } else {
+      println("Thanks for playing Guess Who!")
+    }
+  }
 
   //Game loop
+  def playGame(): Unit = {
   while (!gameBoard.checkWinCondition) {
     println("\nRemaining characters:")
     gameBoard.printRemainingCharacters()
@@ -69,12 +83,11 @@ object Game extends App {
       } else {
         println(s"\nGame over, you guessed incorrectly. The character was ${gameBoard.getSelectedCharacter.name}.")
       }
-
     }
   }
-  gameBoard.resetBoard()
+  }
 
-
+  startGame()
 }
 
 
