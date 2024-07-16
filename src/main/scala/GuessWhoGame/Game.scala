@@ -4,7 +4,7 @@ import scala.util.Random
 import scala.io.StdIn
 
 object Game extends App {
-
+  //stored cases for all different types are allowed - certain restricted numbers of colours etc that could be stored and matched
   val char1: Character = Character("joe", "male", "brown", "blue", wearsGlasses = false, facialHair = false)
   val char2: Character = Character("muhammad", "male", "black", "brown", wearsGlasses = true, facialHair = true)
   val char3: Character = Character("april", "female", "blonde", "blue", wearsGlasses = true, facialHair = false)
@@ -26,6 +26,7 @@ object Game extends App {
   val char19: Character = Character("dave", "male", "none", "yellow", wearsGlasses = false, facialHair = false)
   val char20: Character = Character("bobbiana", "female", "brown", "blue", wearsGlasses = true, facialHair = false)
 
+  //would remain the same throughout
   var gameBoard = Board(List(char1, char2, char3, char4, char5, char6, char7, char8, char9, char10, char11, char12, char13, char14, char15, char16, char17, char18, char19, char20))
 
   def startGame(): Unit = {

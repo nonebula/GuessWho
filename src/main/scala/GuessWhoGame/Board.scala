@@ -2,6 +2,7 @@ package GuessWhoGame
 
 import scala.util.Random
 
+//values could be more domain specific, name/selecting could be within character case class, then able to test separately
 case class Board(characters: List[Character]) {
   def printCharacterNames(): Unit = {
     characters.foreach(Character => println(Character.name))
