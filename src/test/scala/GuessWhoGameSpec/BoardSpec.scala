@@ -36,7 +36,6 @@ class BoardSpec extends AnyFlatSpec {
   }
 
   // Selects a character
-
   it should "select a random character at the start of the game and keeps this character in the list" in {
     val gameBoard = new Board(characters)
     characters should contain(gameBoard.getSelectedCharacter)
@@ -45,7 +44,6 @@ class BoardSpec extends AnyFlatSpec {
   }
 
   //Watches for the win condition
-
   it should "check win condition correctly" in {
     val gameBoard = new Board(characters)
     if (characters.size <= 1) {
@@ -55,17 +53,16 @@ class BoardSpec extends AnyFlatSpec {
     }
   }
 
-  //Handles questions, rerenders based on question result ||  Stores remaining characters
-
-    it should "eliminate characters correctly based on gender questions" in {
-      val gameBoard = new Board(characters)
-      val initialSize = gameBoard.remainingCharacters.size
-      gameBoard.handleQuestion("gender", Left("male"))
-      val newSize = gameBoard.remainingCharacters.size
-      newSize should be < initialSize
-      //Future testcases
-//      gameBoard.getRemainingCharacters.forall(_.gender == "male") shouldBe false
-    }
+  //Handles questions, re-renders based on question result && Stores remaining characters
+  it should "eliminate characters correctly based on gender questions" in {
+    val gameBoard = new Board(characters)
+    val initialSize = gameBoard.remainingCharacters.size
+    gameBoard.handleQuestion("gender", Left("male"))
+    val newSize = gameBoard.remainingCharacters.size
+    newSize should be < initialSize
+    //Future testcases
+    //      gameBoard.getRemainingCharacters.forall(_.gender == "male") shouldBe false
+  }
 
   it should "eliminate characters correctly based on name questions" in {
     val gameBoard = new Board(characters)
@@ -116,12 +113,6 @@ class BoardSpec extends AnyFlatSpec {
     newSize shouldEqual initialSize
   }
 
-  it should "fail to eliminate characters with incorrect gender" in {
-    val gameBoard = Board(characters)
-    gameBoard.handleQuestion("gender", Left("female"))
-    gameBoard.getRemainingCharacters.forall(_.gender == "male") shouldBe true
-  }
-
   it should "handle edge case where all characters have the same attribute" in {
     val sameGenderCharacters = List(
       Character("john", "male", "brown", "blue", wearsGlasses = false, facialHair = false),
@@ -132,22 +123,27 @@ class BoardSpec extends AnyFlatSpec {
     gameBoard.getRemainingCharacters.size shouldEqual 2
   }
 
+  it should "fail to eliminate characters with incorrect gender" in {
+    val gameBoard = Board(characters)
+    gameBoard.handleQuestion("gender", Left("female"))
+    gameBoard.getRemainingCharacters.forall(_.gender == "male") shouldBe true
+  }
 }
 
 
 
-  // future development
-  //  it should "eliminate a character correctly" in {
-  //    val gameBoard = new Board(characters)
-  //    val characterToEliminate = characters.head
-  //    gameBoard.eliminateCharacter(characterToEliminate)
-  //    gameBoard.getRemainingCharacters should not contain characterToEliminate
-  //    gameBoard.getRemainingCharacters.size shouldEqual (characters.size - 1)
-  //  }
-  //
-  //  it should "return an empty list if all characters are eliminated" in {
-  //    val gameBoard = Board(characters)
-  //    characters.foreach(gameBoard.eliminateCharacter)
-  //    gameBoard.getRemainingCharacters shouldBe empty
-  //  }
+// future development
+//  it should "eliminate a character correctly" in {
+//    val gameBoard = new Board(characters)
+//    val characterToEliminate = characters.head
+//    gameBoard.eliminateCharacter(characterToEliminate)
+//    gameBoard.getRemainingCharacters should not contain characterToEliminate
+//    gameBoard.getRemainingCharacters.size shouldEqual (characters.size - 1)
+//  }
+//
+//  it should "return an empty list if all characters are eliminated" in {
+//    val gameBoard = Board(characters)
+//    characters.foreach(gameBoard.eliminateCharacter)
+//    gameBoard.getRemainingCharacters shouldBe empty
+//  }
 

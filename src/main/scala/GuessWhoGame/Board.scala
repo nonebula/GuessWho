@@ -2,12 +2,12 @@ package GuessWhoGame
 
 import scala.util.Random
 
-case class Board (characters: List[Character]) {
+case class Board(characters: List[Character]) {
   def printCharacterNames(): Unit = {
     characters.foreach(Character => println(Character.name))
   }
 
-   val selectedCharacter: Character = selectRandomCharacter(characters)
+  val selectedCharacter: Character = selectRandomCharacter(characters)
   var remainingCharacters: List[Character] = characters
 
   def printRemainingCharacters(): Unit = {
@@ -18,24 +18,26 @@ case class Board (characters: List[Character]) {
     characters(Random.nextInt(characters.size))
   }
 
+  //Testing purposes
   def getSelectedCharacter: Character = selectedCharacter
 
-  //Testing only, delete once game running clearly
   def printSelectedCharacter(): Unit = {
     println(selectedCharacter.name)
   }
-  //ABOVE = TESTING ONLY
-
 
   def getRemainingCharacters: List[Character] = remainingCharacters
-  def resetBoard(): Unit = {
-    remainingCharacters = characters
-  }
+
   def checkWinCondition: Boolean = getRemainingCharacters.size == 1
 
-    def eliminateCharacter(character: Character): Unit = {
-      var remainingCharacters = characters.filterNot(_ == character)
-    }
+  //Future development
+  //  def resetBoard(): Unit = {
+  //    remainingCharacters = characters
+  //  }
+
+  //  def eliminateCharacter(character: Character): Unit = {
+  //    var remainingCharacters = characters.filterNot(_ == character)
+  //  }
+
   def handleQuestion(attribute: String, value: Either[String, Boolean]): Unit = {
     remainingCharacters = attribute match {
       case "name" =>
@@ -43,13 +45,11 @@ case class Board (characters: List[Character]) {
           case Left(value) =>
             if (selectedCharacter.name == value) {
               remainingCharacters.filter(_.name == value)
-              //endGame()
-//              resetBoard()
             } else {
               remainingCharacters.filterNot(_.name == value)
             }
           case _ => println("Invalid name value added. Try again")
-          remainingCharacters
+            remainingCharacters
         }
       case "gender" =>
         value match {
@@ -60,7 +60,7 @@ case class Board (characters: List[Character]) {
               remainingCharacters.filterNot(_.gender == value)
             }
           case _ => println("Invalid gender value added. Try again")
-          remainingCharacters
+            remainingCharacters
         }
       case "hairColor" =>
         value match {
