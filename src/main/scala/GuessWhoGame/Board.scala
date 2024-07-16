@@ -7,6 +7,7 @@ case class Board (characters: List[Character]) {
     characters.foreach(Character => println(Character.name))
   }
 
+  //storing selected character, remaining characters for updating state
    val selectedCharacter: Character = selectRandomCharacter(characters)
   var remainingCharacters: List[Character] = characters
 
@@ -14,24 +15,29 @@ case class Board (characters: List[Character]) {
     characters(Random.nextInt(characters.size))
   }
 
+  //For testing cases
   def getSelectedCharacter: Character = selectedCharacter
 
-  //Testing only, delete once game running clearly
   def printSelectedCharacter(): Unit = {
     println(selectedCharacter.name)
   }
-  //ABOVE = TESTING ONLY
 
 
+  //fetching remaining characters for state change
   def getRemainingCharacters: List[Character] = remainingCharacters
   def resetBoard(): Unit = {
     remainingCharacters = characters
   }
+
+
   def checkWinCondition: Boolean = getRemainingCharacters.size == 1
 
-    def eliminateCharacter(character: Character): Unit = {
-      var remainingCharacters = characters.filterNot(_ == character)
-    }
+
+  //Further development
+//    def eliminateCharacter(character: Character): Unit = {
+//      var remainingCharacters = characters.filterNot(_ == character)
+//    }
+
   def handleQuestion(attribute: String, value: Either[String, Boolean]): Unit = {
     remainingCharacters = attribute match {
       case "name" =>
