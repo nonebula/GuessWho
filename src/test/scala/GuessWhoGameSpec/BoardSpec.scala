@@ -6,7 +6,7 @@ import org.scalatest.matchers.should.Matchers._
 
 class BoardSpec extends AnyFlatSpec {
 
-  val characters = List(
+  val characters: List[Character] = List(
     Character("joe", "male", "brown", "blue", wearsGlasses = false, facialHair = false),
     Character("muhammad", "male", "black", "brown", wearsGlasses = true, facialHair = true),
     Character("april", "female", "blonde", "blue", wearsGlasses = true, facialHair = false),
@@ -63,7 +63,8 @@ class BoardSpec extends AnyFlatSpec {
       gameBoard.handleQuestion("gender", Left("male"))
       val newSize = gameBoard.remainingCharacters.size
       newSize should be < initialSize
-      //gameBoard.getRemainingCharacters.forall(_.gender == "male") shouldBe true
+      //Future testcases
+//      gameBoard.getRemainingCharacters.forall(_.gender == "male") shouldBe false
     }
 
   it should "eliminate characters correctly based on name questions" in {
@@ -72,7 +73,6 @@ class BoardSpec extends AnyFlatSpec {
     gameBoard.handleQuestion("name", Left("muhammad"))
     val newSize = gameBoard.remainingCharacters.size
     newSize should be < initialSize
-    //gameBoard.getRemainingCharacters.forall(_.gender == "male") shouldBe true
   }
 
   it should "eliminate characters correctly based on hairColor questions" in {
@@ -81,7 +81,6 @@ class BoardSpec extends AnyFlatSpec {
     gameBoard.handleQuestion("hairColor", Left("blonde"))
     val newSize = gameBoard.remainingCharacters.size
     newSize should be < initialSize
-    //gameBoard.getRemainingCharacters.forall(_.gender == "male") shouldBe true
   }
 
   it should "eliminate characters correctly based on eyeColor questions" in {
@@ -90,7 +89,6 @@ class BoardSpec extends AnyFlatSpec {
     gameBoard.handleQuestion("eyeColor", Left("blue"))
     val newSize = gameBoard.remainingCharacters.size
     newSize should be < initialSize
-    //gameBoard.getRemainingCharacters.forall(_.gender == "male") shouldBe true
   }
 
   it should "eliminate characters correctly based on wearsGlasses questions" in {
@@ -99,7 +97,6 @@ class BoardSpec extends AnyFlatSpec {
     gameBoard.handleQuestion("wearsGlasses", Right(false))
     val newSize = gameBoard.remainingCharacters.size
     newSize should be < initialSize
-    //gameBoard.getRemainingCharacters.forall(_.gender == "male") shouldBe true
   }
 
   it should "eliminate characters correctly based on HasFacialHair questions" in {
@@ -108,7 +105,6 @@ class BoardSpec extends AnyFlatSpec {
     gameBoard.handleQuestion("hasFacialHair", Right(false))
     val newSize = gameBoard.remainingCharacters.size
     newSize should be < initialSize
-    //gameBoard.getRemainingCharacters.forall(_.gender == "male") shouldBe true
   }
 
   it should "handle incorrect attribute values cleanly" in {
@@ -136,24 +132,11 @@ class BoardSpec extends AnyFlatSpec {
     gameBoard.getRemainingCharacters.size shouldEqual 2
   }
 
-//    it should "eliminate characters correctly based on questions" in {
-//      val game = new Board(characters)
-//      gameLogic.handleQuestion(_.gender == "male")
-//      board.getRemainingCharacters.forall(_.gender == "male") shouldBe true
-//    }
+}
 
-  // Updates based on filters applied to questions
 
-  //Resets board
-//    it should "reset the game board correctly" in {
-//      val gameBoard = new Board(characters)
-//      gameBoard.handleQuestion(character => character.gender == "male")
-//      gameBoard.getRemainingCharacters.size should be < characters.size
-//      gameBoard.resetBoard()
-//      gameBoard.getRemainingCharacters.size shouldEqual characters.size
-//    }
-  //
-  //  // to revisit if needed
+
+  // future development
   //  it should "eliminate a character correctly" in {
   //    val gameBoard = new Board(characters)
   //    val characterToEliminate = characters.head
@@ -167,4 +150,4 @@ class BoardSpec extends AnyFlatSpec {
   //    characters.foreach(gameBoard.eliminateCharacter)
   //    gameBoard.getRemainingCharacters shouldBe empty
   //  }
-}
+
