@@ -28,5 +28,9 @@ object Game extends App {
 
   gameBoard.printCharacterNames()
 
+  //Building out game to terminal
+  //Separation of concerns regarding game logic
+  //Calling of methods from other sections
+
 }
 
