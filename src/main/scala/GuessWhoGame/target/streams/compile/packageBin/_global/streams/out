@@ -1,0 +1,19 @@
+[0m[[0m[0mdebug[0m] [0m[0mPackaging /Users/joe.higgs/Documents/Training/GuessWho/src/main/scala/GuessWhoGame/target/scala-2.12/guesswhogame_2.12-0.1.0-SNAPSHOT.jar ...[0m
+[0m[[0m[0mdebug[0m] [0m[0mInput file mappings:[0m
+[0m[[0m[0mdebug[0m] [0m[0m	GuessWhoGame[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /Users/joe.higgs/Documents/Training/GuessWho/src/main/scala/GuessWhoGame/target/scala-2.12/classes/GuessWhoGame[0m
+[0m[[0m[0mdebug[0m] [0m[0m	GuessWhoGame/Board.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /Users/joe.higgs/Documents/Training/GuessWho/src/main/scala/GuessWhoGame/target/scala-2.12/classes/GuessWhoGame/Board.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	GuessWhoGame/Game.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /Users/joe.higgs/Documents/Training/GuessWho/src/main/scala/GuessWhoGame/target/scala-2.12/classes/GuessWhoGame/Game.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	GuessWhoGame/Character.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /Users/joe.higgs/Documents/Training/GuessWho/src/main/scala/GuessWhoGame/target/scala-2.12/classes/GuessWhoGame/Character.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	GuessWhoGame/Game$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /Users/joe.higgs/Documents/Training/GuessWho/src/main/scala/GuessWhoGame/target/scala-2.12/classes/GuessWhoGame/Game$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	GuessWhoGame/Character$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /Users/joe.higgs/Documents/Training/GuessWho/src/main/scala/GuessWhoGame/target/scala-2.12/classes/GuessWhoGame/Character$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	GuessWhoGame/Game$delayedInit$body.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /Users/joe.higgs/Documents/Training/GuessWho/src/main/scala/GuessWhoGame/target/scala-2.12/classes/GuessWhoGame/Game$delayedInit$body.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	GuessWhoGame/Board$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /Users/joe.higgs/Documents/Training/GuessWho/src/main/scala/GuessWhoGame/target/scala-2.12/classes/GuessWhoGame/Board$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0mDone packaging.[0m
