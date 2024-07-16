@@ -1,4 +1,5 @@
 package GuessWhoGame
+
 import scala.util.Random
 import scala.io.StdIn
 
@@ -48,49 +49,45 @@ object Game extends App {
 
   //Game loop
   def playGame(): Unit = {
-  while (!gameBoard.checkWinCondition) {
-    println("\nRemaining characters:")
-    gameBoard.printRemainingCharacters()
+    while (!gameBoard.checkWinCondition) {
+      println("\nRemaining characters:")
+      gameBoard.printRemainingCharacters()
 
-    println("\nEnter a hair colour that you want to guess:")
-    val hairInput = scala.io.StdIn.readLine().toLowerCase()
-    gameBoard.handleQuestion("hairColor", Left(hairInput))
+      println("\nEnter a hair colour that you want to guess:")
+      val hairInput = scala.io.StdIn.readLine().toLowerCase()
+      gameBoard.handleQuestion("hairColor", Left(hairInput))
 
-    println("\nRemaining characters:")
-    gameBoard.printRemainingCharacters()
+      println("\nRemaining characters:")
+      gameBoard.printRemainingCharacters()
 
-    println("\nEnter an eye colour that you want to guess:")
-    val eyeInput = scala.io.StdIn.readLine().toLowerCase()
-    gameBoard.handleQuestion("eyeColor", Left(eyeInput))
+      println("\nEnter an eye colour that you want to guess:")
+      val eyeInput = scala.io.StdIn.readLine().toLowerCase()
+      gameBoard.handleQuestion("eyeColor", Left(eyeInput))
 
-    println("\nRemaining characters:")
-    gameBoard.printRemainingCharacters()
+      println("\nRemaining characters:")
+      gameBoard.printRemainingCharacters()
 
-    println("\nEnter a gender that you want to guess (male/female):")
-    val genderInput = scala.io.StdIn.readLine().toLowerCase()
-    gameBoard.handleQuestion("gender", Left(genderInput))
+      println("\nEnter a gender that you want to guess (male/female):")
+      val genderInput = scala.io.StdIn.readLine().toLowerCase()
+      gameBoard.handleQuestion("gender", Left(genderInput))
 
-    println("\nRemaining characters:")
-    gameBoard.printRemainingCharacters()
+      println("\nRemaining characters:")
+      gameBoard.printRemainingCharacters()
 
-    if (!gameBoard.checkWinCondition) {
-      println("\nEnter a name that you want to guess:")
-      val nameInput = scala.io.StdIn.readLine().toLowerCase()
-      gameBoard.handleQuestion("name", Left(nameInput))
+      if (!gameBoard.checkWinCondition) {
+        println("\nEnter a name that you want to guess:")
+        val nameInput = scala.io.StdIn.readLine().toLowerCase()
+        gameBoard.handleQuestion("name", Left(nameInput))
 
-      if (gameBoard.checkWinCondition && gameBoard.getSelectedCharacter.name == (nameInput)) {
-        println(s"\nCongratulations, You guessed correctly. The character was ${gameBoard.getSelectedCharacter.name}.")
-      } else {
-        println(s"\nGame over, you guessed incorrectly. The character was ${gameBoard.getSelectedCharacter.name}.")
+        if (gameBoard.checkWinCondition && gameBoard.getSelectedCharacter.name == (nameInput)) {
+          println(s"\nCongratulations, You guessed correctly. The character was ${gameBoard.getSelectedCharacter.name}.")
+        } else {
+          println(s"\nGame over, you guessed incorrectly. The character was ${gameBoard.getSelectedCharacter.name}.")
+        }
       }
     }
-  }
   }
 
   startGame()
 }
-
-
-  //Separation of concerns regarding game logic
-  //Calling of methods from other sections
 
