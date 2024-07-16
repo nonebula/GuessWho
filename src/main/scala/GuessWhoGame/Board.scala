@@ -33,11 +33,6 @@ case class Board (characters: List[Character]) {
   def checkWinCondition: Boolean = getRemainingCharacters.size == 1
 
 
-  //Further development
-//    def eliminateCharacter(character: Character): Unit = {
-//      var remainingCharacters = characters.filterNot(_ == character)
-//    }
-
   def handleQuestion(attribute: String, value: Either[String, Boolean]): Unit = {
     remainingCharacters = attribute match {
       case "name" =>
@@ -114,4 +109,8 @@ case class Board (characters: List[Character]) {
         }
     }
   }
+  //Further development
+  //    def eliminateCharacter(character: Character): Unit = {
+  //      var remainingCharacters = characters.filterNot(_ == character)
+  //    }
 }
