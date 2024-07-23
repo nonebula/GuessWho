@@ -58,9 +58,9 @@ object Game extends App {
           board.handleQuestion(attribute, Right(hasFacialHair), remainingCharacters)
         case "name" =>
           println("Enter the name of the character:")
-          val name = StdIn.readLine().toLowerCase()
-          val newRemainingCharacters = board.handleQuestion(attribute, Left(name), remainingCharacters)
-          if (board.checkWinCondition(newRemainingCharacters) && board.selectedCharacter.name.equalsIgnoreCase(name)) {
+          val nameInput = StdIn.readLine().toLowerCase()
+          val newRemainingCharacters = board.handleQuestion(attribute, Left(nameInput), remainingCharacters)
+          if (board.checkWinCondition(newRemainingCharacters) && board.selectedCharacter.name.equalsIgnoreCase(nameInput)) {
             println(s"\nCongratulations, You guessed correctly. The character was ${board.selectedCharacter.name}.")
           } else {
             println(s"\nGame over, you guessed incorrectly. The character was ${board.selectedCharacter.name}.")
