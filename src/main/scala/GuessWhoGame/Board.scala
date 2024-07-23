@@ -4,7 +4,7 @@ import scala.util.Random
 import GuessWhoGame.character._
 
 //values could be more domain specific, name/selecting could be within character case class, then able to test separately
-class Board(private val characters: List[Character], private val selectedCharacter: Character) {
+class Board(val characters: List[Character], val selectedCharacter: Character) {
   def printCharacterNames(): List[String] = {
     //    characters.foreach(Character => println(Character.name))
     characters.map(_.name)
