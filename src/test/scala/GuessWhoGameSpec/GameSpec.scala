@@ -13,7 +13,7 @@ class GameSpec extends AnyFlatSpec with Matchers {
     char.name should be("joe")
     char.gender should be(Gender.Male)
     char.hairColor should be(HairColor.Brown)
-    char.eyeColor should be(EyeColor.BlueEye)
+    char.eyeColor should be(EyeColor.Blue)
     char.wearsGlasses.value should be None
       char.facialHair.value should be None
   }
