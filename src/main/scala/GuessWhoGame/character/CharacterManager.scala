@@ -1,5 +1,7 @@
 package GuessWhoGame.character
 
+import scala.util.Random
+
 object CharacterManager {
 
   import GuessWhoGame.character._
@@ -29,4 +31,7 @@ object CharacterManager {
     )
   }
 
+  def selectRandomCharacter(characters: List[Character]): Character = {
+    characters(Random.nextInt(characters.size))
+  }
 }
