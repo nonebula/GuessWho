@@ -1,35 +1,12 @@
 package GuessWhoGameSpec
 
 import GuessWhoGame._
+import GuessWhoGame.character.{CharacterManager, EyeColor, Gender, HairColor, PersonWithFacialHair, PersonWithGlasses}
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers._
 
 class BoardSpec extends AnyFlatSpec {
-
-  //NOT NEEDED, CALL CREATECHARACTERS METHOD INSTEAD
-  //  val characters: List[Character] = List(
-  //    Character("joe", "male", "brown", "blue", wearsGlasses = false, facialHair = false),
-  //    Character("muhammad", "male", "black", "brown", wearsGlasses = true, facialHair = true),
-  //    Character("april", "female", "blonde", "blue", wearsGlasses = true, facialHair = false),
-  //    Character("sally", "female", "blue", "green", wearsGlasses = true, facialHair = true),
-  //    Character("spencer", "male", "brown", "brown", wearsGlasses = false, facialHair = true),
-  //    Character("gemma", "female", "ginger", "blue", wearsGlasses = true, facialHair = false),
-  //    Character("jamie", "male", "none", "green", wearsGlasses = true, facialHair = true),
-  //    Character("jessica", "female", "green", "green", wearsGlasses = false, facialHair = false),
-  //    Character("bilal", "male", "brown", "green", wearsGlasses = false, facialHair = true),
-  //    Character("lisa", "female", "black", "brown", wearsGlasses = true, facialHair = false),
-  //    Character("tom", "male", "brown", "blue", wearsGlasses = true, facialHair = false),
-  //    Character("cheryl", "female", "blonde", "green", wearsGlasses = false, facialHair = false),
-  //    Character("arei", "male", "brown", "brown", wearsGlasses = false, facialHair = true),
-  //    Character("kelly", "female", "none", "green", wearsGlasses = false, facialHair = false),
-  //    Character("tayamul", "male", "brown", "blue", wearsGlasses = false, facialHair = false),
-  //    Character("elaine", "female", "ginger", "blue", wearsGlasses = false, facialHair = true),
-  //    Character("roshan", "male", "brown", "blue", wearsGlasses = true, facialHair = false),
-  //    Character("patricia", "female", "purple", "yellow", wearsGlasses = false, facialHair = false),
-  //    Character("dave", "male", "none", "yellow", wearsGlasses = false, facialHair = false),
-  //    Character("bobbiana", "female", "brown", "blue", wearsGlasses = true, facialHair = false)
-  //  )
-
+  
   //prints out characters onto the board
   "gameBoard" should "initialise with the provided characters" in {
     val gameBoard = new Board(characters)
@@ -148,3 +125,58 @@ class BoardSpec extends AnyFlatSpec {
 //    gameBoard.getRemainingCharacters shouldBe empty
 //  }
 
+"Board" should "print character names" in {
+  val characters = CharacterManager.createCharacters()
+  val board = new Board(characters, characters.head)
+  val characterNames = board.printCharacterNames()
+  characterNames.length should be(20)
+  characterNames should contain(characters.head.name)
+}
+
+"Board" should "handle hair color question correctly" in {
+  val characters = CharacterManager.createCharacters()
+  val board = new Board(characters, characters.head)
+  val remainingCharacters = board.handleQuestion("haircolor", Left("brown"), characters)
+  remainingCharacters shouldBe a[List[_]]
+  all(remainingCharacters.map(_.hairColor)) shouldBe HairColor.Brown
+}
+
+"Board" should "handle eye color question correctly" in {
+  val characters = CharacterManager.createCharacters()
+  val board = new Board(characters, characters.head)
+  val remainingCharacters = board.handleQuestion("eyecolor", Left("blue"), characters)
+  remainingCharacters shouldBe a[List[_]]
+  all(remainingCharacters.map(_.eyeColor)) shouldBe EyeColor.Blue
+}
+
+"Board" should "handle gender question correctly" in {
+  val characters = CharacterManager.createCharacters()
+  val board = new Board(characters, characters.head)
+  val remainingCharacters = board.handleQuestion("gender", Left("male"), characters)
+  remainingCharacters shouldBe a[List[_]]
+  all(remainingCharacters.map(_.gender)) shouldBe Gender.Male
+}
+
+"Board" should "handle wears glasses question correctly" in {
+  val characters = CharacterManager.createCharacters()
+  val board = new Board(characters, characters.head)
+  val remainingCharacters = board.handleQuestion("wearsglasses", Right(true), characters)
+  remainingCharacters shouldBe a[List[_]]
+  all(remainingCharacters.flatMap(_.wearsGlasses)) shouldBe PersonWithGlasses(true)
+}
+
+"Board" should "handle facial hair question correctly" in {
+  val characters = CharacterManager.createCharacters()
+  val board = new Board(characters, characters.head)
+  val remainingCharacters = board.handleQuestion("hasfacialhair", Right(true), characters)
+  remainingCharacters shouldBe a[List[_]]
+  all(remainingCharacters.flatMap(_.facialHair)) shouldBe PersonWithFacialHair(true)
+}
+
+"Board" should "handle name guess correctly" in {
+  val characters = CharacterManager.createCharacters()
+  val selectedCharacter = characters.head
+  val board = new Board(characters, selectedCharacter)
+  val remainingCharacters = board.handleQuestion("name", Left(selectedCharacter.name.toLowerCase()), characters)
+  board.checkWinCondition(remainingCharacters) should be(true)
+}
